@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.bimmr.classtracker.Database.SQLManager;
+
 /**
  * Created by Randy on 2017-09-19.
  */
@@ -42,4 +44,5 @@ public class Util {
         InputMethodManager inputMethodManager = (InputMethodManager) app.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
 }
