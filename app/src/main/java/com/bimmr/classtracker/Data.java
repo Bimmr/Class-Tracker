@@ -1,5 +1,8 @@
 package com.bimmr.classtracker;
 
+import android.content.Context;
+
+import com.bimmr.classtracker.Database.SQLLiteManager;
 import com.bimmr.classtracker.Database.SQLManager;
 
 import java.sql.SQLException;
@@ -13,19 +16,13 @@ public class Data {
 
     private static String currentEmail;
     private static String currentPassword;
-    private static SQLManager sqlManager;
 
-    public static void init(){
-        try {
-            sqlManager = new SQLManager("ClassTracker");
-            sqlManager.createTableIfDoesntExist("User",
-                    new SQLManager.Column("Email", SQLManager.DataType.VARCHAR, 50),
-                    new SQLManager.Column("Password", SQLManager.DataType.VARCHAR, 50),
-                    new SQLManager.Column("Name", SQLManager.DataType.VARCHAR, 50),
-                    new SQLManager.Column("Birthday", SQLManager.DataType.VARCHAR, 50));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    private static SQLLiteManager sqlLiteManager;
+
+    public static void init(Context context){
+
+        sqlLiteManager= new SQLLiteManager(context);
+
     }
 
     /**
@@ -37,13 +34,13 @@ public class Data {
      */
     public static boolean isValid(String email, String password) {
         email = email.toLowerCase();
-        return sqlManager.get("User", "Email", email, "Password").equals(password);
+        return sqlLiteManager.get("User", "Email", email, "Password").equals(password);
     }
 
     public static void addUser(User user) {
-        sqlManager.update("User", "Email", user.getEmail(), "Password", user.getPassword());
-        sqlManager.update("User", "Email", user.getEmail(), "Name", user.getName());
-        sqlManager.update("User", "Email", user.getEmail(), "Birthday", user.getBirthdate());
+        sqlLiteManager.set("User", "Email", user.getEmail(), "Password", user.getPassword());
+        sqlLiteManager.set("User", "Email", user.getEmail(), "Name", user.getName());
+        sqlLiteManager.set("User", "Email", user.getEmail(), "Birthday", user.getBirthdate());
     }
 
     /**
@@ -53,7 +50,7 @@ public class Data {
      * @return if the email is already taken
      */
     public static boolean isEmail(String email) {
-        return sqlManager.getAllKey("User", "Email").contains(email);
+        return sqlLiteManager.getAllKey("User", "Email").contains(email);
     }
 
     public static String getCurrentEmail() {

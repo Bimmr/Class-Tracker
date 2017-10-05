@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Randy on 2017-10-05.
@@ -62,5 +64,11 @@ public class SQLLiteManager extends SQLiteOpenHelper {
             map.put(cursor.getColumnName(i), cursor.getString(i));
         cursor.close();
         return null;
+    }
+
+    public List<String> getAllKey(String table, String key){
+        ArrayList<String> emails = new ArrayList<>();
+
+        return emails;
     }
 }

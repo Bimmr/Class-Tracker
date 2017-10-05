@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 public class User {
-    public User(String name, String email, String password, Date birthdate) {
+    public User(String name, String email, String password, String birthdate) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -19,7 +19,7 @@ public class User {
     private String name;
     private String email;
     private String password;
-    private Date birthdate;
+    private String birthdate;
 
     public String getName() {
         return name;
@@ -45,11 +45,11 @@ public class User {
         this.password = password;
     }
 
-    public Date getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
 
