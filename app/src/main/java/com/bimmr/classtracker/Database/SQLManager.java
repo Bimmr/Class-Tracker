@@ -184,7 +184,6 @@ public class SQLManager {
             this.username = null;
             this.password = null;
             this.connection = null;
-
         }
 
         public MySQL(String hostname, String port, String database, String username, String password) {
