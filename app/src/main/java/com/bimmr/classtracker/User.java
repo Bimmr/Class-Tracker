@@ -1,9 +1,5 @@
 package com.bimmr.classtracker;
 
-import com.bimmr.classtracker.Database.SQLManager;
-
-import java.util.Date;
-
 /**
  * Created by Randy on 2017-10-01.
  */

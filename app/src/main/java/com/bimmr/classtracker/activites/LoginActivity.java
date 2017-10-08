@@ -50,30 +50,45 @@ public class LoginActivity extends AppCompatActivity {
 
             if (tryLogin(Data.getCurrentEmail(), Data.getCurrentPassword())) {
                 Toast.makeText(this, "You've been logged back in", Toast.LENGTH_SHORT).show();
-            } else
+            } else {
                 Toast.makeText(this, "Unable to login with last used account", Toast.LENGTH_SHORT).show();
+                Data.setCurrentEmail(null);
+                Data.setCurrentPassword(null);
+            }
         }
     }
 
     public boolean tryLogin(String email, String password) {
         boolean loggedIn = false;
 
+        SharedPreferences settings = getSharedPreferences("ClassTracker", 0);
+        SharedPreferences.Editor editor = settings.edit();
+
+        //Check if user can login
         if (Data.isValid(email, password)) {
             Util.switchActivity(instance, HomeActivity.class);
 
-            SharedPreferences settings = getSharedPreferences("ClassTracker", 0);
-            SharedPreferences.Editor editor = settings.edit();
+            //Save login info
             editor.putString("email", email);
             editor.putString("password", password);
             editor.apply();
 
-            if (Data.getCurrentEmail() == null && Data.getCurrentPassword() == null) {
-                Data.setCurrentEmail(email);
-                Data.setCurrentPassword(password);
-            }
+            Data.setCurrentEmail(email);
+            Data.setCurrentPassword(password);
+
             loggedIn = true;
-        } else
+        } else {
+
+            //Remove login info
+            editor.remove("email");
+            editor.remove("password");
+            editor.apply();
+
+            Data.setCurrentEmail(null);
+            Data.setCurrentPassword(null);
+
             Toast.makeText(instance, "Invalid login information", Toast.LENGTH_SHORT).show();
+        }
         return loggedIn;
     }
 }

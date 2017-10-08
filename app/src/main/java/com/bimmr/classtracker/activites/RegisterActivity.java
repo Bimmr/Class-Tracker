@@ -45,9 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
             String email = emailText.getText().toString();
             String password = passwordText.getText().toString();
             String name = nameText.getText().toString();
+            String date = birthday.getText().toString();
 
 
-            String invalidMessage = "Invalid Information";//19
+            String invalidMessage = "Invalid Information"; // 19 chars long
 
             //Email Checks
             if (!email.matches(".*@.*\\..*"))
@@ -61,10 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
 
             if(name.length() < 2)
                 invalidMessage += "\n- Enter a name";
-            if(name.length() < 2)
+            if(date.length() == 0)
                 invalidMessage += "\n- Select your birthday";
-
-
 
             if (Data.isEmail(email))
                 Toast.makeText(instance, "Email is already in use", Toast.LENGTH_LONG).show();
@@ -72,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(instance, invalidMessage, Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(instance, "Successfully registered new account", Toast.LENGTH_LONG).show();
-                Data.addUser(new User(name, email, password, null));
+                Data.addUser(new User(name, email, password, birthday.getText().toString()));
                 Util.switchActivity(this, LoginActivity.class);
             }
         });

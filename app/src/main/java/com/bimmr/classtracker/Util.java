@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import com.bimmr.classtracker.Database.SQLManager;
-
 /**
  * Created by Randy on 2017-09-19.
  */

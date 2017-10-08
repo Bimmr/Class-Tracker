@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".activites.LoginActivity" />
         <activity android:name=".activites.RegisterActivity" />
-        <activity android:name=".activites.HomeActivity"></activity>
+        <activity android:name=".activites.HomeActivity"
+            android:label="Home Page"/>
     </application>
 
 </manifest>

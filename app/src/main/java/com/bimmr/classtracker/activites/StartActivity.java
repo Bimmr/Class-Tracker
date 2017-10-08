@@ -25,7 +25,7 @@ public class StartActivity extends AppCompatActivity {
         this.instance = this;
         setContentView(R.layout.activity_start);
 
-        Data.init();
+        Data.init(this);
 
         super.onPostCreate(savedInstanceState);
 
@@ -41,10 +41,8 @@ public class StartActivity extends AppCompatActivity {
             Util.switchActivity(instance, RegisterActivity.class);
         });
 
+        //Check if there was a previously logged in account, and if so try and login again.
         SharedPreferences settings = getSharedPreferences("ClassTracker", 0);
-        for(Map.Entry<String, ?> e : settings.getAll().entrySet()){
-            Log.d("info", e.getKey() + " "+ e.getValue());
-        }
 
         if (settings.contains("email") && settings.contains("password")) {
             Data.setCurrentEmail(settings.getString("email", null));

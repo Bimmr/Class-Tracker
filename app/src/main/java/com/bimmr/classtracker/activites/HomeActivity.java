@@ -25,8 +25,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Util.hideActionBar(this);
-
         Button logout = (Button) findViewById(R.id.logout);
 
         logout.setOnClickListener(click -> {
