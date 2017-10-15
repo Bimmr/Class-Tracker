@@ -1,18 +1,17 @@
-package com.bimmr.classtracker.activites;
+package com.bimmr.classtracker.activites.startup;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bimmr.classtracker.Data;
+import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.R;
 import com.bimmr.classtracker.Util;
-
-import java.util.logging.Logger;
+import com.bimmr.classtracker.activites.MainActivity;
 
 /**
  * Created by Randy on 2017-09-19.
@@ -30,12 +29,12 @@ public class LoginActivity extends AppCompatActivity {
         Util.hideActionBar(this);
 
 
-        Button login = (Button) findViewById(R.id.login);
-        Button back = (Button) findViewById(R.id.back);
+        Button login = (Button) findViewById(R.id.login_login);
+        Button back = (Button) findViewById(R.id.login_back);
 
         login.setOnClickListener(click -> {
-            EditText emailText = (EditText) findViewById(R.id.email);
-            EditText passwordText = (EditText) findViewById(R.id.password);
+            EditText emailText = (EditText) findViewById(R.id.login_email);
+            EditText passwordText = (EditText) findViewById(R.id.login_password);
 
             String email = emailText.getText().toString();
             String password = passwordText.getText().toString();
@@ -43,17 +42,17 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         back.setOnClickListener(click -> {
-            Util.switchActivity(instance, StartActivity.class);
+            startActivity(new Intent(this, StartActivity.class));
         });
 
-        if (Data.getCurrentEmail() != null && Data.getCurrentPassword() != null) {
+        if (Manager.getData().getCurrentEmail() != null && Manager.getData().getCurrentPassword() != null) {
 
-            if (tryLogin(Data.getCurrentEmail(), Data.getCurrentPassword())) {
+            if (tryLogin(Manager.getData().getCurrentEmail(), Manager.getData().getCurrentPassword())) {
                 Toast.makeText(this, "You've been logged back in", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Unable to login with last used account", Toast.LENGTH_SHORT).show();
-                Data.setCurrentEmail(null);
-                Data.setCurrentPassword(null);
+                Manager.getData().setCurrentEmail(null);
+                Manager.getData().setCurrentPassword(null);
             }
         }
     }
@@ -65,16 +64,16 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = settings.edit();
 
         //Check if user can login
-        if (Data.isValid(email, password)) {
-            Util.switchActivity(instance, HomeActivity.class);
+        if (Manager.getData().isValid(email, password)) {
+            startActivity(new Intent(this, MainActivity.class));
 
             //Save login info
             editor.putString("email", email);
             editor.putString("password", password);
             editor.apply();
 
-            Data.setCurrentEmail(email);
-            Data.setCurrentPassword(password);
+            Manager.getData().setCurrentEmail(email);
+            Manager.getData().setCurrentPassword(password);
 
             loggedIn = true;
         } else {
@@ -84,8 +83,8 @@ public class LoginActivity extends AppCompatActivity {
             editor.remove("password");
             editor.apply();
 
-            Data.setCurrentEmail(null);
-            Data.setCurrentPassword(null);
+            Manager.getData().setCurrentEmail(null);
+            Manager.getData().setCurrentPassword(null);
 
             Toast.makeText(instance, "Invalid login information", Toast.LENGTH_SHORT).show();
         }

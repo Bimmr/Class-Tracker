@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
-    tools:context="com.bimmr.classtracker.activites.RegisterActivity"
+    tools:context="com.bimmr.classtracker.activites.startup.RegisterActivity"
     android:background="@drawable/background"
     android:orientation="vertical"
     android:weightSum="10"
@@ -13,7 +13,6 @@
     android:focusableInTouchMode="true" >
 
         <TextView
-            android:id="@+id/textView"
             style="@style/Header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -35,7 +34,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/loginInfo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".5"
@@ -44,7 +42,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/register_email"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
@@ -55,7 +53,7 @@
 
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
@@ -77,7 +75,6 @@
             android:weightSum="2.5">
 
             <TextView
-                android:id="@+id/personalInfo"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight=".5"
@@ -85,7 +82,7 @@
                 android:text="Personal Information"
                 android:textAlignment="center" />
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/register_name"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
@@ -96,7 +93,7 @@
 
 
             <EditText
-                android:id="@+id/birthdate"
+                android:id="@+id/register_birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="10dp"
@@ -123,27 +120,27 @@
             android:weightSum="2">
 
             <Button
-                android:id="@+id/create"
+                android:id="@+id/register_create"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttons"
+                android:background="@drawable/startbuttons"
                 android:text="Create"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="20dp" />
 
             <Button
-                android:id="@+id/back"
+                android:id="@+id/register_back"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="1dp"
                 android:layout_weight="1"
-                android:background="@drawable/buttons"
+                android:background="@drawable/startbuttons"
                 android:text="Back"
                 android:textAllCaps="false"
                 android:textColor="#fff"

@@ -16,17 +16,43 @@ import java.util.List;
 
 public class Data {
 
-    private static String currentEmail;
-    private static String currentPassword;
+    private String currentEmail;
+    private String currentPassword;
 
-    private static SQLLiteManager sqlLiteManager;
+    private SQLLiteManager sqlLiteManager;
 
-    public static void init(Context context) {
+    public Data() {
 
-        sqlLiteManager = new SQLLiteManager(context);
-        sqlLiteManager.createTable("User", "email TEXT PRIMARY KEY", "password TEXT NOT NULL", "name TEXT", "birthday DATE");
-        if (!sqlLiteManager.tableContains("User", "Email", "bimmr@gmail.com", null))
+        sqlLiteManager = Manager.getSqlLiteManager();
+
+        try {
+            sqlLiteManager.createTable("User", "email TEXT", "password TEXT NOT NULL", "name TEXT", "birthday DATE", "CONSTRAINT user_pk PRIMARY KEY (email)");
+            sqlLiteManager.createTable("Classes", "email TEXT", "name TEXT", "CONSTRAINT class_pk PRIMARY KEY (email, name)", "CONSTRAINT user_email_fk FOREIGN KEY (email) REFERENCES User (email)");
+            sqlLiteManager.createTable("ClassSchedule", "classRowId INTEGER", "day TEXT", "start TIME", "end TIME", "CONSTRAINT classschedule_pk PRIMARY KEY (classRowId, day, start, end)");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
             sqlLiteManager.insert("User", new String[]{"Email", "Password"}, new String[]{"bimmr@gmail.com", "password1"});
+            sqlLiteManager.insert("User", new String[]{"Email", "Password"}, new String[]{"test@gmail.com", "password1"});
+        } catch (Exception e) {
+        }
+        try {
+            sqlLiteManager.insert("Classes", new String[]{"Email", "Name"}, new String[]{"bimmr@gmail.com", "PROG3210"});
+            sqlLiteManager.insert("Classes", new String[]{"Email", "Name"}, new String[]{"bimmr@gmail.com", "PROG3170"});
+            sqlLiteManager.insert("Classes", new String[]{"Email", "Name"}, new String[]{"test@gmail.com", "PROG3170"});
+        } catch (Exception e1) {
+        }
+        try {
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"1", "Tuesday", "10:00:00", "12:00:00"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"1", "Thursday", "09:00:00", "11:00:00"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"2", "Thursday", "12:00:00", "15:00:00"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"3", "Thursday", "12:00:00", "15:00:00"});
+        } catch (Exception e2) {
+        }
+        Log.d("USER TABLE",DatabaseUtils.dumpCursorToString(sqlLiteManager.runSQL("select * from user")));
+        Log.d("CLASS TABLE",DatabaseUtils.dumpCursorToString(sqlLiteManager.runSQL("select * from classes")));
+        Log.d("CLASS SCHEDULE TABLE",DatabaseUtils.dumpCursorToString(sqlLiteManager.runSQL("select * from classschedule")));
     }
 
     /**
@@ -36,7 +62,9 @@ public class Data {
      * @param password the password
      * @return if email and password are valid
      */
-    public static boolean isValid(String email, String password) {
+    public boolean isValid(String email, String password) {
+        if (email != null)
+            email = email.toLowerCase();
         return sqlLiteManager.tableContains("User", "Email", email,
                 new Pair[]{
                         new Pair<>("Email", email),
@@ -48,10 +76,10 @@ public class Data {
      *
      * @param user - user profile to add to the database
      */
-    public static void addUser(User user) {
+    public void addUser(User user) {
         sqlLiteManager.set("User",
                 new String[]{"Email", "Password", "Name", "Birthday"},
-                new String[]{user.getEmail(), user.getPassword(), user.getName(), user.getBirthdate()});
+                new String[]{user.getEmail().toLowerCase(), user.getPassword(), user.getName(), user.getBirthdate()});
     }
 
     /**
@@ -60,7 +88,9 @@ public class Data {
      * @param email the email
      * @return if the email is already taken
      */
-    public static boolean isEmail(String email) {
+    public boolean isEmail(String email) {
+        if (email != null)
+            email = email.toLowerCase();
         return sqlLiteManager.tableContains("User", "Email", email, null);
 //        List<?> list = sqlLiteManager.get("User",
 //                new String[]{"Email"},
@@ -74,19 +104,21 @@ public class Data {
 //        return true;
     }
 
-    public static String getCurrentEmail() {
+    public String getCurrentEmail() {
         return currentEmail;
     }
 
-    public static void setCurrentEmail(String currentEmail) {
-        Data.currentEmail = currentEmail;
+    public void setCurrentEmail(String currentEmail) {
+        if (currentEmail != null)
+            currentEmail = currentEmail.toLowerCase();
+        this.currentEmail = currentEmail;
     }
 
-    public static String getCurrentPassword() {
+    public String getCurrentPassword() {
         return currentPassword;
     }
 
-    public static void setCurrentPassword(String currentPassword) {
-        Data.currentPassword = currentPassword;
+    public void setCurrentPassword(String currentPassword) {
+        this.currentPassword = currentPassword;
     }
 }

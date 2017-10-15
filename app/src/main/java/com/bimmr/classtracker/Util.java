@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 
 public class Util {
 
+
     /**
      * Hide the actionbar at the top of the page
      *
@@ -26,18 +27,6 @@ public class Util {
             actionBar.hide();
         }
     }
-
-    /**
-     * Switch current activity
-     *
-     * @param current the current activities instance
-     * @param intent  the next activities class
-     */
-    public static void switchActivity(AppCompatActivity current, Class intent) {
-        Intent myIntent = new Intent(current, intent);
-        current.startActivity(myIntent);
-    }
-
     public void hideKeyboard(AppCompatActivity app, View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) app.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);

@@ -11,6 +11,8 @@ import android.database.sqlite.SQLiteStatement;
 import android.util.Log;
 import android.util.Pair;
 
+import com.bimmr.classtracker.Manager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,8 +29,8 @@ public class SQLLiteManager extends SQLiteOpenHelper {
     private static final String DATABASE = "ClassTracker.db";
 
 
-    public SQLLiteManager(Context context) {
-        super(context, DATABASE, null, VERSION);
+    public SQLLiteManager() {
+        super(Manager.getContext(), DATABASE, null, VERSION);
     }
 
     @Override
@@ -38,8 +40,8 @@ public class SQLLiteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        String sql = "DROP TABLE IF EXISTS User";
-        sqLiteDatabase.execSQL(sql);
+//        String sql = "DROP TABLE IF EXISTS User";
+//        sqLiteDatabase.execSQL(sql);
     }
 
     /**

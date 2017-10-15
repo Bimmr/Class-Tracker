@@ -9,10 +9,9 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:weightSum="10"
-    tools:context="com.bimmr.classtracker.activites.LoginActivity">
+    tools:context="com.bimmr.classtracker.activites.startup.LoginActivity">
 
     <TextView
-        android:id="@+id/textView"
         style="@style/Header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -22,7 +21,7 @@
         android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
@@ -34,7 +33,7 @@
 
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -61,27 +60,27 @@
         android:weightSum="2">
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/login_login"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@drawable/buttons"
+            android:background="@drawable/startbuttons"
             android:text="Log In"
             android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/back"
+            android:id="@+id/login_back"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginTop="1dp"
             android:layout_weight="1"
-            android:background="@drawable/buttons"
+            android:background="@drawable/startbuttons"
             android:text="Back"
             android:textAllCaps="false"
             android:textColor="#fff"

@@ -1,46 +1,42 @@
-package com.bimmr.classtracker.activites;
+package com.bimmr.classtracker.activites.startup;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.bimmr.classtracker.Data;
+import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.R;
 import com.bimmr.classtracker.User;
 import com.bimmr.classtracker.Util;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
-import java.util.regex.Pattern;
 
 /**
  * Created by Randy on 2017-09-19.
  */
 public class RegisterActivity extends AppCompatActivity {
-    private AppCompatActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.instance = this;
         setContentView(R.layout.activity_register);
 
         Util.hideActionBar(this);
 
-        Button create = (Button) findViewById(R.id.create);
-        Button back = (Button) findViewById(R.id.back);
-        EditText birthday = (EditText) findViewById(R.id.birthdate);
+        Button create = (Button) findViewById(R.id.register_create);
+        Button back = (Button) findViewById(R.id.register_back);
+        EditText birthday = (EditText) findViewById(R.id.register_birthdate);
 
         create.setOnClickListener(click -> {
-            EditText emailText = (EditText) findViewById(R.id.email);
-            EditText passwordText = (EditText) findViewById(R.id.password);
-            EditText nameText = (EditText) findViewById(R.id.name);
+            EditText emailText = (EditText) findViewById(R.id.register_email);
+            EditText passwordText = (EditText) findViewById(R.id.register_password);
+            EditText nameText = (EditText) findViewById(R.id.register_name);
 
             String email = emailText.getText().toString();
             String password = passwordText.getText().toString();
@@ -65,19 +61,19 @@ public class RegisterActivity extends AppCompatActivity {
             if(date.length() == 0)
                 invalidMessage += "\n- Select your birthday";
 
-            if (Data.isEmail(email))
-                Toast.makeText(instance, "Email is already in use", Toast.LENGTH_LONG).show();
+            if (Manager.getData().isEmail(email))
+                Toast.makeText(this, "Email is already in use", Toast.LENGTH_LONG).show();
             else if (invalidMessage.length() > 19) {
-                Toast.makeText(instance, invalidMessage, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, invalidMessage, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(instance, "Successfully registered new account", Toast.LENGTH_LONG).show();
-                Data.addUser(new User(name, email, password, birthday.getText().toString()));
-                Util.switchActivity(this, LoginActivity.class);
+                Toast.makeText(this, "Successfully registered new account", Toast.LENGTH_LONG).show();
+                Manager.getData().addUser(new User(name, email, password, birthday.getText().toString()));
+                startActivity(new Intent(this, LoginActivity.class));
             }
         });
 
         back.setOnClickListener(click -> {
-            Util.switchActivity(instance, StartActivity.class);
+            startActivity(new Intent(this, StartActivity.class));
         });
 
         Calendar calendar = Calendar.getInstance();
