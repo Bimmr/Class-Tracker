@@ -46,14 +46,14 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, StartActivity.class));
         });
 
-        String email,pass;
-        if ((email=Preferences.get("email")) != null && (pass=Preferences.get("password")) != null) {
+        String email, pass;
+        if ((email = Preferences.get("email")) != null && (pass = Preferences.get("password")) != null) {
 
             if (tryLogin(email, pass)) {
                 Toast.makeText(this, "You've been logged back in", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Unable to login with last used account", Toast.LENGTH_SHORT).show();
-                Preferences.remove("email","password");
+                Preferences.remove("email", "password");
             }
         }
     }
@@ -66,10 +66,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
 
             //Save login info
-            Preferences.set(new Pair("email", email), new Pair("password", password));
+            Preferences.set(new Pair<>("email", email), new Pair<>("password", password));
             loggedIn = true;
         } else {
-            Preferences.remove("email","password");
+            Preferences.remove("email", "password");
             Toast.makeText(instance, "Invalid login information", Toast.LENGTH_SHORT).show();
         }
         return loggedIn;
