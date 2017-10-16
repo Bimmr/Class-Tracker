@@ -1,14 +1,10 @@
 package com.bimmr.classtracker.Database;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import android.util.Log;
 import android.util.Pair;
 
 import com.bimmr.classtracker.Manager;

@@ -1,6 +1,5 @@
 package com.bimmr.classtracker.objects;
 
-import android.util.Log;
 import android.util.Pair;
 
 import com.bimmr.classtracker.Manager;

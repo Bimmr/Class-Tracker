@@ -1,18 +1,11 @@
 package com.bimmr.classtracker.activites;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.R;
 import com.bimmr.classtracker.objects.Class;
-import com.bimmr.classtracker.objects.ClassManager;
 import com.bimmr.classtracker.objects.ClassSchedule;
 
 public class MainActivity extends BaseActivity {

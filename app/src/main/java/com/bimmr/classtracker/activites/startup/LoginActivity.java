@@ -1,14 +1,15 @@
 package com.bimmr.classtracker.activites.startup;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Pair;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bimmr.classtracker.Manager;
+import com.bimmr.classtracker.Preferences;
 import com.bimmr.classtracker.R;
 import com.bimmr.classtracker.Util;
 import com.bimmr.classtracker.activites.MainActivity;
@@ -45,14 +46,14 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, StartActivity.class));
         });
 
-        if (Manager.getData().getCurrentEmail() != null && Manager.getData().getCurrentPassword() != null) {
+        String email,pass;
+        if ((email=Preferences.get("email")) != null && (pass=Preferences.get("password")) != null) {
 
-            if (tryLogin(Manager.getData().getCurrentEmail(), Manager.getData().getCurrentPassword())) {
+            if (tryLogin(email, pass)) {
                 Toast.makeText(this, "You've been logged back in", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Unable to login with last used account", Toast.LENGTH_SHORT).show();
-                Manager.getData().setCurrentEmail(null);
-                Manager.getData().setCurrentPassword(null);
+                Preferences.remove("email","password");
             }
         }
     }
@@ -60,32 +61,15 @@ public class LoginActivity extends AppCompatActivity {
     public boolean tryLogin(String email, String password) {
         boolean loggedIn = false;
 
-        SharedPreferences settings = getSharedPreferences("ClassTracker", 0);
-        SharedPreferences.Editor editor = settings.edit();
-
         //Check if user can login
         if (Manager.getData().isValid(email, password)) {
             startActivity(new Intent(this, MainActivity.class));
 
             //Save login info
-            editor.putString("email", email);
-            editor.putString("password", password);
-            editor.apply();
-
-            Manager.getData().setCurrentEmail(email);
-            Manager.getData().setCurrentPassword(password);
-
+            Preferences.set(new Pair("email", email), new Pair("password", password));
             loggedIn = true;
         } else {
-
-            //Remove login info
-            editor.remove("email");
-            editor.remove("password");
-            editor.apply();
-
-            Manager.getData().setCurrentEmail(null);
-            Manager.getData().setCurrentPassword(null);
-
+            Preferences.remove("email","password");
             Toast.makeText(instance, "Invalid login information", Toast.LENGTH_SHORT).show();
         }
         return loggedIn;

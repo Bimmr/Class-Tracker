@@ -1,23 +1,16 @@
 package com.bimmr.classtracker;
 
-import android.content.Context;
-import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.util.Log;
 import android.util.Pair;
 
 import com.bimmr.classtracker.Database.SQLLiteManager;
 
-import java.util.List;
-
 /**
  * Created by Randy on 2017-09-19.
  */
 
 public class Data {
-
-    private String currentEmail;
-    private String currentPassword;
 
     private SQLLiteManager sqlLiteManager;
 
@@ -92,33 +85,6 @@ public class Data {
         if (email != null)
             email = email.toLowerCase();
         return sqlLiteManager.tableContains("User", "Email", email, null);
-//        List<?> list = sqlLiteManager.get("User",
-//                new String[]{"Email"},
-//                new Pair[]{
-//                        new Pair<>("Email", email)
-//                });
-//
-//        if (list.isEmpty())
-//            return false;
-//
-//        return true;
     }
 
-    public String getCurrentEmail() {
-        return currentEmail;
-    }
-
-    public void setCurrentEmail(String currentEmail) {
-        if (currentEmail != null)
-            currentEmail = currentEmail.toLowerCase();
-        this.currentEmail = currentEmail;
-    }
-
-    public String getCurrentPassword() {
-        return currentPassword;
-    }
-
-    public void setCurrentPassword(String currentPassword) {
-        this.currentPassword = currentPassword;
-    }
 }
