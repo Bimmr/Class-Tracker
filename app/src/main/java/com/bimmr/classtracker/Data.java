@@ -66,13 +66,15 @@ public class Data {
 
     /**
      * Add a user to the database
-     *
-     * @param user - user profile to add to the database
+     * @param email- users email
+     * @param password - users password
+     * @param name - users name
+     * @param birthday - users birthday
      */
-    public void addUser(User user) {
+    public void addUser(String email, String password, String name, String birthday) {
         sqlLiteManager.set("User",
                 new String[]{"Email", "Password", "Name", "Birthday"},
-                new String[]{user.getEmail().toLowerCase(), user.getPassword(), user.getName(), user.getBirthdate()});
+                new String[]{email.toLowerCase(),password, name, birthday});
     }
 
     /**

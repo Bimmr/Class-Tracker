@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.R;
-import com.bimmr.classtracker.User;
 import com.bimmr.classtracker.Util;
 
 import java.text.SimpleDateFormat;
@@ -66,8 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
             else if (invalidMessage.length() > 19) {
                 Toast.makeText(this, invalidMessage, Toast.LENGTH_LONG).show();
             } else {
+                Manager.getData().addUser(email, password, name, date);
                 Toast.makeText(this, "Successfully registered new account", Toast.LENGTH_LONG).show();
-                Manager.getData().addUser(new User(name, email, password, birthday.getText().toString()));
                 startActivity(new Intent(this, LoginActivity.class));
             }
         });
