@@ -24,10 +24,21 @@
         <activity
             android:name=".activites.MainActivity"
             android:label="Home" />
-        <activity android:name=".activites.SettingsActivity"
+        <activity
+            android:name=".activites.SettingsActivity"
             android:label="Settings" />
-        <activity android:name=".activites.DashboardActivity"
-            android:label="Dashboard"></activity>
+        <activity
+            android:name=".activites.DashboardActivity"
+            android:label="Dashboard" />
+        <activity
+            android:name=".activites.ClassManageActivity"
+            android:label="@string/title_activity_class_manage"
+            android:parentActivityName=".activites.DashboardActivity"
+            android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bimmr.classtracker.activites.DashboardActivity" />
+        </activity>
     </application>
 
 </manifest>

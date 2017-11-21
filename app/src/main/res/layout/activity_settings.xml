@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="The Settings page is still lacking in content..."
+        android:text="Settings / Options"
         android:textAllCaps="true"
         android:textSize="25dp"
         android:textStyle="bold" />
@@ -24,8 +24,7 @@
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_weight
-            ="1">
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,6 +51,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Someone@email.com" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ccc" />
+
+            <TextView
+                android:id="@+id/settings_changePassTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Change Password:"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/settings_changePass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Click here to change password" />
 
             <View
                 android:layout_width="match_parent"
