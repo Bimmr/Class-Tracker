@@ -1,6 +1,7 @@
 package com.bimmr.classtracker;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.bimmr.classtracker.Database.SQLLiteManager;
 import com.bimmr.classtracker.objects.ClassManager;
@@ -23,7 +24,15 @@ public class Manager {
 
     public static void init(Context context){
         Manager.context = context;
-        Manager.sqlLiteManager = new SQLLiteManager();
+        Manager.sqlLiteManager = new SQLLiteManager(2){
+
+            @Override
+            public void upgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
+                if(i1>=2){
+                    this.runSQL("ALTER TABLE ClassSchedule ADD Room TEXT");
+                }
+            }
+        };
         Manager.data = new Data();
     }
 

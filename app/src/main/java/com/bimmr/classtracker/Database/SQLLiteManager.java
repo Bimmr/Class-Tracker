@@ -21,12 +21,11 @@ import java.util.Map;
 
 public class SQLLiteManager extends SQLiteOpenHelper {
 
-    private static final int VERSION = 1;
     private static final String DATABASE = "ClassTracker.db";
 
 
-    public SQLLiteManager() {
-        super(Manager.getContext(), DATABASE, null, VERSION);
+    public SQLLiteManager(int dbVersion) {
+        super(Manager.getContext(), DATABASE, null, dbVersion);
     }
 
     @Override
@@ -36,8 +35,7 @@ public class SQLLiteManager extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-//        String sql = "DROP TABLE IF EXISTS User";
-//        sqLiteDatabase.execSQL(sql);
+       upgrade(sqLiteDatabase, i, i1);
     }
 
     /**
@@ -208,5 +206,8 @@ public class SQLLiteManager extends SQLiteOpenHelper {
 
     public Cursor runSQL(String sql) throws SQLException {
         return getWritableDatabase().rawQuery(sql, null);
+    }
+    public  void upgrade(SQLiteDatabase sqLiteDatabase, int oldV, int newV){
+
     }
 }

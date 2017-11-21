@@ -21,7 +21,7 @@ public class Data {
         try {
             sqlLiteManager.createTable("User", "email TEXT", "password TEXT NOT NULL", "name TEXT", "birthday DATE", "CONSTRAINT user_pk PRIMARY KEY (email)");
             sqlLiteManager.createTable("Classes", "email TEXT", "name TEXT", "CONSTRAINT class_pk PRIMARY KEY (email, name)", "CONSTRAINT user_email_fk FOREIGN KEY (email) REFERENCES User (email)");
-            sqlLiteManager.createTable("ClassSchedule", "classRowId INTEGER", "day TEXT", "start TIME", "end TIME", "CONSTRAINT classschedule_pk PRIMARY KEY (classRowId, day, start, end)");
+            sqlLiteManager.createTable("ClassSchedule", "classRowId INTEGER", "day TEXT", "start TIME", "end TIME", "room TEXT", "CONSTRAINT classschedule_pk PRIMARY KEY (classRowId, day, start, end, room)");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,10 +37,10 @@ public class Data {
         } catch (Exception e1) {
         }
         try {
-            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"1", "Tuesday", "10:00:00", "12:00:00"});
-            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"1", "Thursday", "09:00:00", "11:00:00"});
-            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"2", "Thursday", "12:00:00", "15:00:00"});
-            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end"}, new String[]{"3", "Thursday", "12:00:00", "15:00:00"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"1", "Tuesday", "10:00:00", "12:00:00", "2A100"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"1", "Thursday", "09:00:00", "11:00:00", "2A101"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"2", "Thursday", "12:00:00", "15:00:00", "2A100"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"3", "Thursday", "12:00:00", "15:00:00", "2A104"});
         } catch (Exception e2) {
         }
         Log.d("USER TABLE",DatabaseUtils.dumpCursorToString(sqlLiteManager.runSQL("select * from user")));
