@@ -40,7 +40,7 @@ public class Class {
         classScheduales.clear();
         List<HashMap<String, String>> schedules = Manager.getSqlLiteManager().get("ClassSchedule", new String[]{"rowid", "*"}, new Pair[]{new Pair("classRowId", ""+this.id)});
         for (HashMap<String, String> s : schedules) {
-            ClassSchedule cs = new ClassSchedule(Integer.parseInt(s.get("rowid")), s.get("day"), Time.valueOf(s.get("start")), Time.valueOf(s.get("end")));
+            ClassSchedule cs = new ClassSchedule(Integer.parseInt(s.get("rowid")), s.get("day"), Time.valueOf(s.get("start")), Time.valueOf(s.get("end")), s.get("room"));
             classScheduales.add(cs);
         }
     }

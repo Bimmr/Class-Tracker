@@ -13,28 +13,15 @@ public class ClassSchedule {
     private String dayOfWeek;
     private Time startTime;
     private Time endTime;
+    private String room;
 
 
-    public ClassSchedule(int id, String dayOfWeek, Time startTime, Time endTime){
+    public ClassSchedule(int id, String dayOfWeek, Time startTime, Time endTime, String room){
         this.id = id;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
         this.endTime = endTime;
-    }
-
-    public ClassSchedule(int id, String string){
-        this.id = id;
-
-        //Day-start:time-end:time
-        //Monday 10:00-13:00
-        String[] parts = string.split("-");
-        String day = parts[0];
-        String start = parts[1];
-        String end = parts[2];
-
-        this.dayOfWeek = day;
-        this.startTime = Time.valueOf(start);
-        this.endTime = Time.valueOf(end);
+        this.room = room;
     }
 
     public String getDayOfWeek() {
@@ -64,7 +51,16 @@ public class ClassSchedule {
     public int getId() {
         return id;
     }
+
     public void updateToDB(){
 
+    }
+
+    public String getRoom() {
+        return room;
+    }
+
+    public void setRoom(String room) {
+        this.room = room;
     }
 }
