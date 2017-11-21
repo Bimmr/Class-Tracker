@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity {
         for (Class cls : Manager.getClassManager().getClasses()) {
             classes += cls.getName() + "\n";
             for (ClassSchedule cs : cls.getClassScheduales())
-                classes += cs.getDayOfWeek() + "-" + cs.getStartTime() + "-" + cs.getEndTime() + "\n";
+                classes += cs.getDayOfWeek() + "-" + cs.getStartTime() + "-" + cs.getEndTime() + " "+cs.getRoom()+"\n";
             classes += "\n\n";
         }
         if (classes.length() > 0)
