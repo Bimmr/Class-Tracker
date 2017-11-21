@@ -32,7 +32,7 @@
             android:label="Dashboard" />
         <activity
             android:name=".activites.ClassManageActivity"
-            android:label="@string/title_activity_class_manage"
+            android:label="Manage Your Classes"
             android:parentActivityName=".activites.DashboardActivity"
             android:theme="@style/NoActionBar">
             <meta-data
