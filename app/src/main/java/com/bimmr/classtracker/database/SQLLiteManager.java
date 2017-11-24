@@ -1,4 +1,4 @@
-package com.bimmr.classtracker.Database;
+package com.bimmr.classtracker.database;
 
 import android.database.Cursor;
 import android.database.SQLException;

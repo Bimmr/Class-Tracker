@@ -3,7 +3,7 @@ package com.bimmr.classtracker;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.bimmr.classtracker.Database.SQLLiteManager;
+import com.bimmr.classtracker.database.SQLLiteManager;
 import com.bimmr.classtracker.objects.ClassManager;
 
 /**

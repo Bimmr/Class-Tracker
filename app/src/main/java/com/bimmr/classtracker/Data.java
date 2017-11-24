@@ -4,7 +4,7 @@ import android.database.DatabaseUtils;
 import android.util.Log;
 import android.util.Pair;
 
-import com.bimmr.classtracker.Database.SQLLiteManager;
+import com.bimmr.classtracker.database.SQLLiteManager;
 
 /**
  * Created by Randy on 2017-09-19.
