@@ -22,7 +22,7 @@ public class ClassManager {
     private ArrayList<Class> classes = new ArrayList<>();
 
     public ClassManager() {
-        List<HashMap<String, String>> classes = Manager.getSqlLiteManager().get("Classes", new String[]{"rowid", "*"}, new Pair[]{new Pair("email", Preferences.get("email"))});
+        List<HashMap<String, String>> classes = Manager.getSqlLiteManager().get("Classes", new String[]{"rowid", "*"}, new Pair[]{new Pair("email", Preferences.get("email").toLowerCase())});
         for (HashMap<String, String> c : classes) {
             Class clas = new Class(Integer.parseInt(c.get("rowid")), c.get("name"));
             this.classes.add(clas);
