@@ -1,5 +1,7 @@
 package com.bimmr.classtracker.activites;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,10 +22,16 @@ public class SettingsActivity extends BaseActivity {
         ((TextView)findViewById(R.id.settings_currentEmail)).setText(Preferences.get("email"));
 
         ((Button) findViewById(R.id.settings_logout)).setOnClickListener(click -> {
-            Preferences.remove("email","password");
-
-            startActivity(new Intent(this, StartActivity.class));
+            new AlertDialog.Builder(this)
+                    .setTitle("Are you sure?")
+                    .setMessage("Do you really want to log out?")
+                    .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
+                        Preferences.remove("email","password");
+                        startActivity(new Intent(getBaseContext(), StartActivity.class));
+                    })
+                    .setNegativeButton(android.R.string.no, null).show();
         });
+
         ((TextView) findViewById(R.id.settings_changePassTitle)).setOnClickListener(click -> {
             ((TextView) findViewById(R.id.settings_changePass)).callOnClick();
         });
