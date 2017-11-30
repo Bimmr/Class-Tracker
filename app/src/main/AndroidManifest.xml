@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        android:theme="@style/MyCustomTheme">
         <activity
             android:name=".activites.startup.StartActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -35,6 +35,15 @@
             android:label="Manage Your Classes"
             android:parentActivityName=".activites.DashboardActivity"
             android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.bimmr.classtracker.activites.DashboardActivity" />
+        </activity>
+        <activity
+            android:name=".activites.ScheduleManageActivity"
+            android:label="Manage Your Schedule"
+            android:parentActivityName=".activites.DashboardActivity"
+            android:theme="@style/MyCustomTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bimmr.classtracker.activites.DashboardActivity" />

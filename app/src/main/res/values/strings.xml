@@ -25,4 +25,5 @@
     <string name="log_out">Log Out</string>
     <string name="title_activity_class_dashboard">ClassDashboardActivity</string>
     <string name="title_activity_class_manage">ClassManageActivity</string>
+    <string name="title_activity_schedule_manage">ScheduleManageActivity</string>
 </resources>
