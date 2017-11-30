@@ -39,4 +39,22 @@
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="MyCustomTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:colorPrimary">#738182</item>
+        <item name="android:colorAccent">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:colorForeground">@android:color/black</item>
+        <item name="colorAccent">@android:color/black</item>
+        <item name="colorButtonNormal">#a200bc11</item>
+    </style>
+
+    <style name="MyCustomTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="MyCustomTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="MyCustomTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

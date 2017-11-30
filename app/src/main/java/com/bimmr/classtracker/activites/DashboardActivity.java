@@ -15,11 +15,10 @@ public class DashboardActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         ((Button)findViewById(R.id.dashboard_classes)).setOnClickListener(click ->{
-
             startActivity(new Intent(this, ClassManageActivity.class));
         });
         ((Button)findViewById(R.id.dashboard_schedule)).setOnClickListener(click ->{
-            Toast.makeText(this, "TODO: Open Schedule managment page", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ScheduleManageActivity.class));
         });
         ((Button)findViewById(R.id.dashboard_assignment)).setOnClickListener(click ->{
             Toast.makeText(this, "TODO: Open Assignment managment page", Toast.LENGTH_SHORT).show();

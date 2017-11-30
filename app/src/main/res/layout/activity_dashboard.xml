@@ -20,64 +20,46 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:orientation="vertical"
-                android:weightSum="2">
+                android:weightSum="4">
 
-                <LinearLayout
+                <Button
+                    android:id="@+id/dashboard_classes"
+                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <Button
-                        android:id="@+id/dashboard_classes"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:background="@drawable/dashbuttons"
-                        android:textColor="#0074D9"
-                        android:text="Classes"
-                        android:layout_marginRight="10dp"
-                        android:layout_height="match_parent" />
-                    <Button
-                        android:id="@+id/dashboard_schedule"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:background="@drawable/dashbuttons"
-                        android:textColor="#0074D9"
-                        android:layout_marginLeft="10dp"
-                        android:text="Schedule"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
-                <LinearLayout
+                    android:text="Classes"
+                    android:layout_height="0dp"
+                    android:gravity = "center_vertical|start"
+                    android:drawableRight="@drawable/ic_settings_black_24dp"
+                    android:paddingRight="20dp"/>
+                <Button
+                    android:id="@+id/dashboard_schedule"
+                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp">
-
-                    <Button
-                        android:id="@+id/dashboard_assignment"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:background="@drawable/dashbuttons"
-                        android:textColor="#0074D9"
-                        android:text="Assignments"
-                        android:layout_marginRight="10dp"
-                        android:layout_height="match_parent" />
-                    <Button
-                        android:id="@+id/dashboard_tests"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:background="@drawable/dashbuttons"
-                        android:textColor="#0074D9"
-                        android:layout_marginLeft="10dp"
-                        android:text="Tests"
-                        android:layout_height="match_parent" />
-                </LinearLayout>
+                    android:text="Schedule"
+                    android:layout_height="0dp"
+                    android:gravity = "center_vertical|start"
+                    android:drawableRight="@drawable/ic_settings_black_24dp"
+                    android:paddingRight="20dp" />
+                <Button
+                    android:id="@+id/dashboard_assignment"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:text="Assignments"
+                    android:layout_height="0dp"
+                    android:gravity = "center_vertical|start"
+                    android:drawableRight="@drawable/ic_settings_black_24dp"
+                    android:paddingRight="20dp" />
+                <Button
+                    android:id="@+id/dashboard_tests"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:text="Tests"
+                    android:layout_height="0dp"
+                    android:gravity = "center_vertical|start"
+                    android:drawableRight="@drawable/ic_settings_black_24dp"
+                    android:paddingRight="20dp" />
             </LinearLayout>
 
 
