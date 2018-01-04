@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
 
             //Save login info
-            Preferences.set(new Pair<>("email", email), new Pair<>("password", password));
+            Preferences.set(new Pair<>("email", email.toLowerCase()), new Pair<>("password", password));
             loggedIn = true;
         } else {
             Preferences.remove("email", "password");

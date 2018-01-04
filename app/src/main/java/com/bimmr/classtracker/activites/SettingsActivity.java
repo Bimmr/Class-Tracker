@@ -3,6 +3,7 @@ package com.bimmr.classtracker.activites;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,11 +13,15 @@ import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.Preferences;
 import com.bimmr.classtracker.R;
 import com.bimmr.classtracker.activites.startup.StartActivity;
+import com.bimmr.classtracker.tasks.DownloadTask;
 
 public class SettingsActivity extends BaseActivity {
 
+    public static SettingsActivity settingsActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        settingsActivity = this;
         super.onCreate(savedInstanceState);
 
         ((TextView)findViewById(R.id.settings_currentEmail)).setText(Preferences.get("email"));
@@ -37,6 +42,20 @@ public class SettingsActivity extends BaseActivity {
         });
         ((TextView) findViewById(R.id.settings_changePass)).setOnClickListener(click -> {
             Toast.makeText(Manager.getContext(), "Change pass", Toast.LENGTH_SHORT).show();
+        });
+        ((Button) findViewById(R.id.settings_contactme)).setOnClickListener(click -> {
+            startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:Bimmr6696@gmail.com")));
+        });
+        ((Button) findViewById(R.id.settings_viewOnAppStore)).setOnClickListener(click -> {
+            final String appPackageName = getPackageName();
+            try {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+            } catch (android.content.ActivityNotFoundException anfe) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+            }
+        });
+        ((Button) findViewById(R.id.settings_viewPDF)).setOnClickListener(click -> {
+            new DownloadTask().execute();
         });
 
     }

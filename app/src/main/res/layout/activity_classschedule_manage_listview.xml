@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context="com.bimmr.classtracker.activites.ClassManageActivity">
+
+    <TextView
+        android:id="@+id/classList_className"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Class Name"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:background="#1f000000" />
+
+    <TextView
+        android:id="@+id/classList_classSchedule"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:text="Class Schedule"
+        android:textSize="20dp"
+        android:background="#1f000000" />
+
+</LinearLayout>

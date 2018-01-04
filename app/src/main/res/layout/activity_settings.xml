@@ -69,6 +69,39 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:background="#ccc" />
+
+
+            <Button
+                android:id="@+id/settings_contactme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="Contact Me" />
+
+            <Button
+                android:id="@+id/settings_viewOnAppStore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="View on AppStore" />
+
+            <Button
+                android:id="@+id/settings_viewPDF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:text="View PDF on time managment" />
         </LinearLayout>
 
     </ScrollView>

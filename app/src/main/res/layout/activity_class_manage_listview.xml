@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="vertical"
+    tools:context="com.bimmr.classtracker.activites.ClassManageActivity">
+
+    <TextView
+        android:id="@+id/classList_className"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:padding="10dip"
+        android:layout_margin="10dp"
+        android:text="Class Name"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:background="#1f000000" />
+
+</LinearLayout>

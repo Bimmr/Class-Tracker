@@ -86,6 +86,39 @@ public class SQLLiteManager extends SQLiteOpenHelper {
     }
 
     /**
+     * Delete data from table
+     * @param table the table name
+     * @param conditions the conditions
+     */
+    public void delete(String table, Pair<String, String>[] conditions) {
+        List<HashMap<String, String>> results = new ArrayList<>();
+        String columns = "";
+
+        String wheres = "";
+        List<String> whereVals = new ArrayList<>();
+
+
+        String sql = "DELETE FROM " + table;
+
+        if (conditions != null && conditions.length > 0) {
+            sql += " WHERE ";
+            String where = "";
+            for (Pair<String, String> w : conditions) {
+                whereVals.add(w.second);
+                where += w.first + "=?" + (w.second.equals(conditions[conditions.length - 1].second) ? "" : " AND ");
+            }
+            sql += where;
+        }
+        sql += ";";
+
+        String[] args = whereVals.toArray(new String[whereVals.size()]);
+
+        SQLiteStatement statement = getWritableDatabase().compileStatement(sql);
+        statement.bindAllArgsAsStrings(args);
+        statement.executeInsert();
+    }
+
+    /**
      * Insert/Update the table. Will update or insert based upon the need of the table
      *
      * @param table   - The table
