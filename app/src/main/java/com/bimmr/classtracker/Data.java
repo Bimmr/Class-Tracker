@@ -38,6 +38,8 @@ public class Data {
         }
         try {
             sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"1", "Tuesday", "10:00:00", "12:00:00", "2A100"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"1", "Wednesday", "09:00:00", "11:00:00", "2A101"});
+            sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"2", "Wednesday", "12:00:00", "11:00:00", "2A101"});
             sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"1", "Thursday", "09:00:00", "11:00:00", "2A101"});
             sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"2", "Thursday", "12:00:00", "15:00:00", "2A100"});
             sqlLiteManager.insert("ClassSchedule", new String[]{"classRowId", "day", "start", "end", "room"}, new String[]{"3", "Thursday", "12:00:00", "15:00:00", "2A104"});

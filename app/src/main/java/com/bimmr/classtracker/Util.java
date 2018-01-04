@@ -1,6 +1,9 @@
 package com.bimmr.classtracker;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +15,25 @@ import android.view.inputmethod.InputMethodManager;
 
 public class Util {
 
+
+    /**
+     * Show Notifications
+     *
+     * @param title   the title of the notification
+     * @param message the message in the notification
+     */
+    public static void showNotification(String title, String message) {
+
+        Notification notification = new NotificationCompat.Builder(Manager.getContext())
+                .setSmallIcon(R.mipmap.icon)
+                .setContentTitle(title)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
+                .setAutoCancel(true)
+                .build();
+        NotificationManager manager = (NotificationManager) Manager.getContext().getSystemService(Manager.getContext().NOTIFICATION_SERVICE);
+        manager.notify(0, notification);
+
+    }
 
     /**
      * Hide the actionbar at the top of the page
@@ -26,6 +48,7 @@ public class Util {
             actionBar.hide();
         }
     }
+
     public void hideKeyboard(AppCompatActivity app, View view) {
         InputMethodManager inputMethodManager = (InputMethodManager) app.getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);

@@ -5,7 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.util.Pair;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,14 +27,14 @@ public class SettingsActivity extends BaseActivity {
         settingsActivity = this;
         super.onCreate(savedInstanceState);
 
-        ((TextView)findViewById(R.id.settings_currentEmail)).setText(Preferences.get("email"));
+        ((TextView) findViewById(R.id.settings_currentEmail)).setText(Preferences.get("email"));
 
         ((Button) findViewById(R.id.settings_logout)).setOnClickListener(click -> {
             new AlertDialog.Builder(this)
                     .setTitle("Are you sure?")
                     .setMessage("Do you really want to log out?")
                     .setPositiveButton(android.R.string.yes, (dialog, whichButton) -> {
-                        Preferences.remove("email","password");
+                        Preferences.remove("email", "password");
                         startActivity(new Intent(getBaseContext(), StartActivity.class));
                     })
                     .setNegativeButton(android.R.string.no, null).show();
@@ -41,7 +44,25 @@ public class SettingsActivity extends BaseActivity {
             ((TextView) findViewById(R.id.settings_changePass)).callOnClick();
         });
         ((TextView) findViewById(R.id.settings_changePass)).setOnClickListener(click -> {
-            Toast.makeText(Manager.getContext(), "Change pass", Toast.LENGTH_SHORT).show();
+
+            EditText pass = new EditText(this);
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Change your password")
+                    .setMessage("Enter your new password")
+                    .setView(pass)
+                    .setPositiveButton("Set", (dialog, whichButton) -> {
+                        String p = pass.getText().toString();
+                        String email = Preferences.get("email");
+
+                        Preferences.set(new Pair<>("email", email.toLowerCase()), new Pair<>("password", p));
+                        Manager.getSqlLiteManager().update("User", new String[]{"Password", "Email"}, new String[]{p, email});
+                    })
+                    .setNegativeButton("Cancel", (dialog, whichButton) -> {
+
+                    })
+                    .show();
+
         });
         ((Button) findViewById(R.id.settings_contactme)).setOnClickListener(click -> {
             startActivity(new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:Bimmr6696@gmail.com")));

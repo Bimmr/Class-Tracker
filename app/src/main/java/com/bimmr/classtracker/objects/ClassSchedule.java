@@ -1,6 +1,7 @@
 package com.bimmr.classtracker.objects;
 
 import java.sql.Time;
+import java.util.Calendar;
 
 /**
  * Created by Randy on 2017-10-15.
@@ -16,7 +17,7 @@ public class ClassSchedule {
     private String room;
 
 
-    public ClassSchedule(int id, String dayOfWeek, Time startTime, Time endTime, String room){
+    public ClassSchedule(int id, String dayOfWeek, Time startTime, Time endTime, String room) {
         this.id = id;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;
@@ -26,6 +27,26 @@ public class ClassSchedule {
 
     public String getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public int getDayOfWeekVal() {
+        switch (getDayOfWeek()) {
+            case "Sunday":
+                return Calendar.SUNDAY;
+            case "Monday":
+                return Calendar.MONDAY;
+            case "Tuesday":
+                return Calendar.TUESDAY;
+            case "Wednesday":
+                return Calendar.WEDNESDAY;
+            case "Thursday":
+                return Calendar.THURSDAY;
+            case "Friday":
+                return Calendar.FRIDAY;
+            case "Saturday":
+                return Calendar.SATURDAY;
+        }
+        return -1;
     }
 
     public void setDayOfWeek(String dayOfWeek) {
@@ -52,7 +73,7 @@ public class ClassSchedule {
         return id;
     }
 
-    public void updateToDB(){
+    public void updateToDB() {
 
     }
 

@@ -81,8 +81,11 @@ public class ClassManageActivity extends AppCompatActivity {
                                         })
                                         .setNegativeButton(android.R.string.no, (dialog2, whichButton2) -> {
                                         }).show();
-                            } else
+                            } else {
                                 Manager.getSqlLiteManager().delete("Classes", new Pair[]{new Pair("rowId", "" + c.getId())});
+                                Manager.getClassManager().updateClasses();
+                                updateClassList();
+                            }
                         })
                         .setNegativeButton(android.R.string.no, (dialog, whichButton) -> {
                         }).show();

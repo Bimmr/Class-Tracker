@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "498405127162",
+    "firebase_url": "https://classtracker-30304.firebaseio.com",
+    "project_id": "classtracker-30304",
+    "storage_bucket": "classtracker-30304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498405127162:android:c902bbd1c43aea5a",
+        "android_client_info": {
+          "package_name": "com.bimmr.classtracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "498405127162-edb7m69pkc55dglg3mjaeu5qqim8hpvt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bimmr.classtracker",
+            "certificate_hash": "29a5cec79cc542ca9e7e47f6c81f46dc099c37f2"
+          }
+        },
+        {
+          "client_id": "498405127162-o11tvbj0oo7g33h822h4jgb2sr1413gc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq5LsnaFowXooL4VBDA6lCL5pwMfWwnqw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "498405127162-o11tvbj0oo7g33h822h4jgb2sr1413gc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

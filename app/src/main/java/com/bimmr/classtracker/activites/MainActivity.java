@@ -1,12 +1,15 @@
 package com.bimmr.classtracker.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.bimmr.classtracker.Manager;
 import com.bimmr.classtracker.R;
+import com.bimmr.classtracker.Util;
 import com.bimmr.classtracker.objects.Class;
 import com.bimmr.classtracker.objects.ClassSchedule;
+import com.bimmr.classtracker.services.BackgroundService;
 
 public class MainActivity extends BaseActivity {
 
@@ -25,6 +28,8 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        startService(new Intent(this, BackgroundService.class));
+
         Manager.initClassManager();
 
         String classes = "";
@@ -36,6 +41,7 @@ public class MainActivity extends BaseActivity {
         }
         if (classes.length() > 0)
             ((TextView) findViewById(R.id.main_classList)).setText(classes);
+
 
     }
 }
